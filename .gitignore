@@ -8,7 +8,6 @@ GPGKEY
 *.sh
 *.json
 *.dump
-*.txt
 *.npz
 *.pdf
 *.npy
@@ -41,3 +40,9 @@ GPGKEY
 /PRLetters 2016/
 
 /CIKM 2015/
+
+/Embeddings/data/
+
+/Embeddings/preliminary_experiments/
+
+/packages.txt
