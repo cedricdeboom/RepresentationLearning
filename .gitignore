@@ -1,0 +1,43 @@
+/.metadata/
+/Embeddings/.idea/
+/Embeddings/data/semeval/
+/cudnn-6.5-linux-x64-v2/
+GPGKEY
+*.pyc
+*.sav
+*.sh
+*.json
+*.dump
+*.txt
+*.npz
+*.pdf
+*.npy
+*.model
+*.png
+*.jar
+*.synctex.gz
+*.out
+*.log
+*.aux
+*.ai
+*.blg
+*.xlsx
+/extractTweetTextFromXZ/
+
+*.RData
+
+.Rhistory
+
+*.gif
+
+/word2vec/
+
+/temp/
+
+/skip-thoughts/
+
+/ReLSD 2015/
+
+/PRLetters 2016/
+
+/CIKM 2015/
