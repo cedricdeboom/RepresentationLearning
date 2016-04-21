@@ -109,7 +109,7 @@ class NN4():
 
                 print 'Training, batch %d, cost %.5f' % (b, cost)
                 we = self.model1.W.get_value()
-                print we
+                print repr(we)
                 f = we[0] * (lin ** 2) + we[1] * lin + we[2]
                 print f
 

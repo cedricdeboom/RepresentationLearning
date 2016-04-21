@@ -501,7 +501,7 @@ if __name__ == '__main__':
     f.close()
 
     w = w2v()
-    # w.load_minimal('../data/wiki/model/minimal')
+    w.load_minimal('../data/wiki/model/minimal')
 
     texts = ['../data/wiki/pairs/enwiki_no_pairs_10.txt', '../data/wiki/pairs/enwiki_pairs_10.txt']
     labels = ['Pairs', 'No pairs']
@@ -530,17 +530,18 @@ if __name__ == '__main__':
     # make_plot_from_vector(np.asarray(NN_trained_weights.EUCL_WEIGHTS_20), ['20'], '20.pdf')
     # make_plot_from_vector(np.asarray(NN_trained_weights.EUCL_WEIGHTS_30), ['30'], '30.pdf')
 
-    # make_plot_from_vector([np.asarray(NN_trained_weights.EUCL_WEIGHTS_20), np.asarray(midf)], ['Trained weights', 'Mean idf values'], ['bs-', 'r^-'], 'test.pdf')
+    # make_plot_from_vector([np.asarray(NN_trained_weights.EUCL_WEIGHTS_20), np.asarray(NN_trained_weights.EUCL_WEIGHTS_20M)],
+    #                       ['Contrastive loss', 'Median loss'], ['bs-', 'r^-'], 'test.pdf')
 
-    # texts1 = ['../data/wiki/pairs/sets/enwiki_no_pairs_20-test.txt', '../data/wiki/pairs/sets/enwiki_pairs_20-test.txt']
-    # output1 = ['../data/wiki/pairs/sets/minmaxcon_no_pairs_20-test.npy', '../data/wiki/pairs/sets/minmaxcon_pairs_20-test.npy']
-    # p1 = Process(target=process_to_file_with_filter, args=(metrics.minMax(metrics.euclidean), texts1, output1, 2000000, w, docfreqs))
-    # p1.start()
-    #
-    # texts2 = ['../data/wiki/pairs/sets/enwiki_no_pairs_20-validation.txt', '../data/wiki/pairs/sets/enwiki_pairs_20-validation.txt']
-    # output2 = ['../data/wiki/pairs/sets/minmaxcon_no_pairs_20-validation.npy', '../data/wiki/pairs/sets/minmaxcon_pairs_20-validation.npy']
-    # p2 = Process(target=process_to_file_with_filter, args=(metrics.minMax(metrics.euclidean), texts2, output2, 2000000, w, docfreqs))
-    # p2.start()
+    texts1 = ['../data/tweets/pairs/sets/tweet-no-pairs-test.txt', '../data/tweets/pairs/sets/tweet-pairs-test.txt']
+    output1 = ['../data/tweets/pairs/sets/nntopcontr_no_pairs-test.npy', '../data/tweets/pairs/sets/nntopcontr_pairs-test.npy']
+    p1 = Process(target=process_to_file_with_filter, args=(metrics.NNVarMean(metrics.euclidean, 'VC'), texts1, output1, 100000, w, docfreqs))
+    p1.start()
+
+    texts2 = ['../data/tweets/pairs/sets/tweet-no-pairs-validation.txt', '../data/tweets/pairs/sets/tweet-pairs-validation.txt']
+    output2 = ['../data/tweets/pairs/sets/nntopcontr_no_pairs-validation.npy', '../data/tweets/pairs/sets/nntopcontr_pairs-validation.npy']
+    p2 = Process(target=process_to_file_with_filter, args=(metrics.NNVarMean(metrics.euclidean, 'VC'), texts2, output2, 100000, w, docfreqs))
+    p2.start()
     #
     # texts3 = ['../data/wiki/pairs/sets/enwiki_no_pairs_20-test.txt', '../data/wiki/pairs/sets/enwiki_pairs_20-test.txt']
     # output3 = ['../data/wiki/pairs/sets/minmaxcontop_no_pairs_20-test.npy', '../data/wiki/pairs/sets/minmaxcontop_pairs_20-test.npy']
@@ -552,8 +553,8 @@ if __name__ == '__main__':
     # p4 = Process(target=process_to_file_with_filter, args=(metrics.minMaxTop(metrics.euclidean), texts4, output4, 2000000, w, docfreqs))
     # p4.start()
     #
-    # p1.join()
-    # p2.join()
+    p1.join()
+    p2.join()
     # p3.join()
     # p4.join()
     #
@@ -578,12 +579,12 @@ if __name__ == '__main__':
     #calculate_error_rate_from_table(tables=['../data/pairs/tfidf_no_pairs_30.npy', '../data/pairs/tfidf_pairs_30.npy'])
 
     # COMPARE TWO METHODS
-    input = ['../data/tweets/pairs/sets/mean_no_pairs-validation.npy',
-             '../data/tweets/pairs/sets/mean_pairs-validation.npy']
-    labels = ['No pairs', 'Pairs']
-    colors = ['0.45', '0.75']
-    min, max = calculate_min_max_from_table(input)
-    make_plot_from_table(input, labels=labels, colors=colors, output='tweet-mean.pdf', log=False, normalize=(min, max))
+    # input = ['../data/tweets/pairs/sets/mean_no_pairs-validation.npy',
+    #          '../data/tweets/pairs/sets/mean_pairs-validation.npy']
+    # labels = ['No pairs', 'Pairs']
+    # colors = ['0.45', '0.75']
+    # min, max = calculate_min_max_from_table(input)
+    # make_plot_from_table(input, labels=labels, colors=colors, output='tweet-mean.pdf', log=False, normalize=(min, max))
 
     #LDA EXAMPLE
     #input = ['../data/pairs/lda_no_pairs_10.npy', '../data/pairs/lda_pairs_10.npy']

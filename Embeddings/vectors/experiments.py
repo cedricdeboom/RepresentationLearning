@@ -30,74 +30,82 @@ f.close()
 #w = w2v()
 #w.load_minimal('../data/model/minimal')
 
-tablesA = ['../data/google/pairs/sets/tfidf_no_pairs_r-validation.npy', '../data/google/pairs/sets/tfidf_pairs_r-validation.npy']
-minA, maxA = sp.calculate_min_max_from_table(tablesA)
-splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
-tablesA = ['../data/google/pairs/sets/tfidf_no_pairs_r-test.npy', '../data/google/pairs/sets/tfidf_pairs_r-test.npy']
-sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
-sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
-print ""
+# tablesA = ['../data/google/pairs/sets/tfidf_no_pairs_r-validation.npy', '../data/google/pairs/sets/tfidf_pairs_r-validation.npy']
+# minA, maxA = sp.calculate_min_max_from_table(tablesA)
+# splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
+# tablesA = ['../data/google/pairs/sets/tfidf_no_pairs_r-test.npy', '../data/google/pairs/sets/tfidf_pairs_r-test.npy']
+# sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
+# sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
+# print ""
+#
+# tablesA = ['../data/google/pairs/sets/mean_no_pairs_r-validation.npy', '../data/google/pairs/sets/mean_pairs_r-validation.npy']
+# minA, maxA = sp.calculate_min_max_from_table(tablesA)
+# splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
+# tablesA = ['../data/google/pairs/sets/mean_no_pairs_r-test.npy', '../data/google/pairs/sets/mean_pairs_r-test.npy']
+# sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
+# sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
+# print ""
+#
+# tablesA = ['../data/google/pairs/sets/max_no_pairs_r-validation.npy', '../data/google/pairs/sets/max_pairs_r-validation.npy']
+# minA, maxA = sp.calculate_min_max_from_table(tablesA)
+# splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
+# tablesA = ['../data/google/pairs/sets/max_no_pairs_r-test.npy', '../data/google/pairs/sets/max_pairs_r-test.npy']
+# sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
+# sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
+# print ""
+#
+# tablesA = ['../data/google/pairs/sets/minmaxcon_no_pairs_r-validation.npy', '../data/google/pairs/sets/minmaxcon_pairs_r-validation.npy']
+# minA, maxA = sp.calculate_min_max_from_table(tablesA)
+# splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
+# tablesA = ['../data/google/pairs/sets/minmaxcon_no_pairs_r-test.npy', '../data/google/pairs/sets/minmaxcon_pairs_r-test.npy']
+# sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
+# sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
+# print ""
+#
+# tablesA = ['../data/google/pairs/sets/meantop_no_pairs_r-validation.npy', '../data/google/pairs/sets/meantop_pairs_r-validation.npy']
+# minA, maxA = sp.calculate_min_max_from_table(tablesA)
+# splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
+# tablesA = ['../data/google/pairs/sets/meantop_no_pairs_r-test.npy', '../data/google/pairs/sets/meantop_pairs_r-test.npy']
+# sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
+# sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
+# print ""
+#
+# tablesA = ['../data/google/pairs/sets/maxtop_no_pairs_r-validation.npy', '../data/google/pairs/sets/maxtop_pairs_r-validation.npy']
+# minA, maxA = sp.calculate_min_max_from_table(tablesA)
+# splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
+# tablesA = ['../data/google/pairs/sets/maxtop_no_pairs_r-test.npy', '../data/google/pairs/sets/maxtop_pairs_r-test.npy']
+# sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
+# sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
+# print ""
+#
+# tablesA = ['../data/google/pairs/sets/minmaxcontop_no_pairs_r-validation.npy', '../data/google/pairs/sets/minmaxcontop_pairs_r-validation.npy']
+# minA, maxA = sp.calculate_min_max_from_table(tablesA)
+# splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
+# tablesA = ['../data/google/pairs/sets/minmaxcontop_no_pairs_r-test.npy', '../data/google/pairs/sets/minmaxcontop_pairs_r-test.npy']
+# sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
+# sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
+# print ""
+#
+# tablesA = ['../data/google/pairs/sets/wmean_no_pairs_r-validation.npy', '../data/google/pairs/sets/wmean_pairs_r-validation.npy']
+# minA, maxA = sp.calculate_min_max_from_table(tablesA)
+# splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
+# tablesA = ['../data/google/pairs/sets/wmean_no_pairs_r-test.npy', '../data/google/pairs/sets/wmean_pairs_r-test.npy']
+# sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
+# sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
+# print ""
+#
+# tablesA = ['../data/google/pairs/sets/nntop_no_pairs_r-validation.npy', '../data/google/pairs/sets/nntop_pairs_r-validation.npy']
+# minA, maxA = sp.calculate_min_max_from_table(tablesA)
+# splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
+# tablesA = ['../data/google/pairs/sets/nntop_no_pairs_r-test.npy', '../data/google/pairs/sets/nntop_pairs_r-test.npy']
+# sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
+# sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
+# print ""
 
-tablesA = ['../data/google/pairs/sets/mean_no_pairs_r-validation.npy', '../data/google/pairs/sets/mean_pairs_r-validation.npy']
+tablesA = ['../data/tweets/pairs/sets/nntopcontr_no_pairs-validation.npy', '../data/tweets/pairs/sets/nntopcontr_pairs-validation.npy']
 minA, maxA = sp.calculate_min_max_from_table(tablesA)
 splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
-tablesA = ['../data/google/pairs/sets/mean_no_pairs_r-test.npy', '../data/google/pairs/sets/mean_pairs_r-test.npy']
-sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
-sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
-print ""
-
-tablesA = ['../data/google/pairs/sets/max_no_pairs_r-validation.npy', '../data/google/pairs/sets/max_pairs_r-validation.npy']
-minA, maxA = sp.calculate_min_max_from_table(tablesA)
-splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
-tablesA = ['../data/google/pairs/sets/max_no_pairs_r-test.npy', '../data/google/pairs/sets/max_pairs_r-test.npy']
-sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
-sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
-print ""
-
-tablesA = ['../data/google/pairs/sets/minmaxcon_no_pairs_r-validation.npy', '../data/google/pairs/sets/minmaxcon_pairs_r-validation.npy']
-minA, maxA = sp.calculate_min_max_from_table(tablesA)
-splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
-tablesA = ['../data/google/pairs/sets/minmaxcon_no_pairs_r-test.npy', '../data/google/pairs/sets/minmaxcon_pairs_r-test.npy']
-sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
-sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
-print ""
-
-tablesA = ['../data/google/pairs/sets/meantop_no_pairs_r-validation.npy', '../data/google/pairs/sets/meantop_pairs_r-validation.npy']
-minA, maxA = sp.calculate_min_max_from_table(tablesA)
-splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
-tablesA = ['../data/google/pairs/sets/meantop_no_pairs_r-test.npy', '../data/google/pairs/sets/meantop_pairs_r-test.npy']
-sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
-sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
-print ""
-
-tablesA = ['../data/google/pairs/sets/maxtop_no_pairs_r-validation.npy', '../data/google/pairs/sets/maxtop_pairs_r-validation.npy']
-minA, maxA = sp.calculate_min_max_from_table(tablesA)
-splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
-tablesA = ['../data/google/pairs/sets/maxtop_no_pairs_r-test.npy', '../data/google/pairs/sets/maxtop_pairs_r-test.npy']
-sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
-sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
-print ""
-
-tablesA = ['../data/google/pairs/sets/minmaxcontop_no_pairs_r-validation.npy', '../data/google/pairs/sets/minmaxcontop_pairs_r-validation.npy']
-minA, maxA = sp.calculate_min_max_from_table(tablesA)
-splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
-tablesA = ['../data/google/pairs/sets/minmaxcontop_no_pairs_r-test.npy', '../data/google/pairs/sets/minmaxcontop_pairs_r-test.npy']
-sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
-sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
-print ""
-
-tablesA = ['../data/google/pairs/sets/wmean_no_pairs_r-validation.npy', '../data/google/pairs/sets/wmean_pairs_r-validation.npy']
-minA, maxA = sp.calculate_min_max_from_table(tablesA)
-splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
-tablesA = ['../data/google/pairs/sets/wmean_no_pairs_r-test.npy', '../data/google/pairs/sets/wmean_pairs_r-test.npy']
-sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
-sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
-print ""
-
-tablesA = ['../data/google/pairs/sets/nntop_no_pairs_r-validation.npy', '../data/google/pairs/sets/nntop_pairs_r-validation.npy']
-minA, maxA = sp.calculate_min_max_from_table(tablesA)
-splitA = sp.calculate_split_from_table(tablesA, verbose=True, normalize=(minA, maxA))
-tablesA = ['../data/google/pairs/sets/nntop_no_pairs_r-test.npy', '../data/google/pairs/sets/nntop_pairs_r-test.npy']
+tablesA = ['../data/tweets/pairs/sets/nntopcontr_no_pairs-test.npy', '../data/tweets/pairs/sets/nntopcontr_pairs-test.npy']
 sp.calculate_error_rate_from_table(tablesA, splitA, normalize=(minA, maxA))
 sp.calculate_JS_from_table(tablesA, normalize=(minA, maxA), verbose=True)
 print ""

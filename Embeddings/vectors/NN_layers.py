@@ -344,12 +344,12 @@ class interpolatingDotMeanLayer():
 
         if W is None:
             W_values = numpy.asarray(
-                    # self.numpy_rng.uniform(
-                    #     low=0.5,
-                    #     high=0.5,
-                    #     size=(self.n_in)
-                    # ),
-                    init_W,
+                    self.numpy_rng.uniform(
+                        low=0.5,
+                        high=0.5,
+                        size=(self.n_in)
+                    ),
+                    #init_W,
                     # numpy.linspace(1.0, 0.0, self.n_in),
                     dtype=theano.config.floatX
                 )

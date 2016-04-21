@@ -397,9 +397,9 @@ def NNVarMean(distance=euclidean, length='V'): #factory
         fA, wordsA = zip(*sorted(zip(fA, wordsA)))
         fB, wordsB = zip(*sorted(zip(fB, wordsB)))
 
-        if length == 'V':
-            a = np.linspace(0.0, (1 - cutoff(len(wordsA)))*34.0, len(wordsA))
-            b = np.linspace(0.0, (1 - cutoff(len(wordsB)))*34.0, len(wordsB))
+        if length.startswith('V'):
+            a = np.linspace(0.0, (1 - cutoff(len(wordsA)))*29.0, len(wordsA))
+            b = np.linspace(0.0, (1 - cutoff(len(wordsB)))*29.0, len(wordsB))
 
             a_high = np.ceil(a).astype(np.int8)
             a_low = np.floor(a).astype(np.int8)
@@ -419,7 +419,7 @@ def NNVarMean(distance=euclidean, length='V'): #factory
             for i in xrange(1, int(len(wordsB))):
                 vecB += bf[i] * w2v_model.get_vector(wordsB[i])
         else:
-            print 'Length must be \'V\'\nNow exiting...'
+            print 'Length must start with \'V\'\nNow exiting...'
             import sys
             sys.exit(0)
 

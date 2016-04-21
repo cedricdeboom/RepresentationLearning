@@ -32,9 +32,9 @@ BATCH_SIZE = 100
 EMBEDDING_DIM = 400
 WORDS = 35  #i.e. max number of words
 EPOCHS = 500
-LEARNING_RATE = 0.01
+LEARNING_RATE = 0.1
 MOMENTUM = 0.0
-REGULARIZATION = 0.0
+REGULARIZATION = 0.000
 COST_FACTOR = 160.0
 
 INPUT_SHAPE = (EMBEDDING_DIM, WORDS)
@@ -173,21 +173,21 @@ class NN8():
             print repr(we)
 
             # UNCOMMENT WHEN THIS PIECE OF CODE IS CALLED EXTERNALLY
-            if numpy.mean(c) < best_cost - 0.0005:
-                previous_best_cost = best_cost
-                best_cost = numpy.mean(c)
-                best_weights = we
-            elif second_time:
-                processor.lock.acquire()
-                processor.stop = True
-                processor.cont = True
-                processor.lock.notifyAll()
-                processor.lock.release()
-                break
-            else:
-                best_cost = previous_best_cost
-                LEARNING_RATE = 0.001
-                second_time = True
+            # if numpy.mean(c) < best_cost - 0.0005:
+            #     previous_best_cost = best_cost
+            #     best_cost = numpy.mean(c)
+            #     best_weights = we
+            # elif second_time:
+            #     processor.lock.acquire()
+            #     processor.stop = True
+            #     processor.cont = True
+            #     processor.lock.notifyAll()
+            #     processor.lock.release()
+            #     break
+            # else:
+            #     best_cost = previous_best_cost
+            #     LEARNING_RATE = 0.001
+            #     second_time = True
 
         t.join()
 
@@ -255,17 +255,21 @@ class NN8():
         output1 = self.model1.output
         output2 = self.model2.output
 
-        #Median loss with cross-entropy
-        distances = ((output1 - output2) ** 2).sum(axis=1)
-        sorted_distances = T.sort(distances)
-        median = (sorted_distances[BATCH_SIZE/2] + sorted_distances[BATCH_SIZE/2 - 1]) / 2.0
+        ## Euclidean loss
+        loss = ((output1 - output2) ** 2).sum(axis=1) * (-self.z)  #--> EUCLIDEAN LOSS
+        return T.mean(loss)
 
-        p = distances[0:BATCH_SIZE:2]  #pairs
-        q = distances[1:BATCH_SIZE:2]  #non-pairs
-
-        loss = (T.log(1.0 + T.exp(-COST_FACTOR*(q - median)))).mean() + \
-            (T.log(1.0 + T.exp(-COST_FACTOR*(median - p)))).mean()          #cross-entropy
-        return loss
+        ### Median loss with cross-entropy
+        # distances = ((output1 - output2) ** 2).sum(axis=1)
+        # sorted_distances = T.sort(distances)
+        # median = (sorted_distances[BATCH_SIZE/2] + sorted_distances[BATCH_SIZE/2 - 1]) / 2.0
+        #
+        # p = distances[0:BATCH_SIZE:2]  #pairs
+        # q = distances[1:BATCH_SIZE:2]  #non-pairs
+        #
+        # loss = (T.log(1.0 + T.exp(-COST_FACTOR*(q - median)))).mean() + \
+        #     (T.log(1.0 + T.exp(-COST_FACTOR*(median - p)))).mean()          #cross-entropy
+        # return loss
 
     def calculate_regularization(self):
         return (self.model1.W ** 2).sum()
