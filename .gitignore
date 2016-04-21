@@ -46,3 +46,5 @@ GPGKEY
 /Embeddings/preliminary_experiments/
 
 /packages.txt
+
+Embeddings/*.py
